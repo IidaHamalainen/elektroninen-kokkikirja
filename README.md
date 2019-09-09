@@ -13,3 +13,7 @@ Toiminnot:
 - ohjeiden poistaminen
 
 [Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/reseptisovellus_tietokantakaavio.pdf)
+
+**Sovellus Herokussa**
+
+[elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
