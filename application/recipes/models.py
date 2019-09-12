@@ -6,7 +6,10 @@ class Recipe(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     difficult = db.Column(db.String(144), nullable=False)
+    event = db.Column(db.String(144), nullable=False)
+    
 
     def __init__(self, name):
         self.name = name
-        self.difficult = "helppo"
+        self.difficult = "Helppo"
+        self.event = 'Arki'

@@ -5,11 +5,13 @@
     <tr>
       <th>Resepti</th>
       <th>Vaikeus</th>
+      <th>Tilaisuus</th>
     </tr>
     {% for recipe in recipes %}
     <tr>
       <td>{{ recipe.name }}</td>
       <td>{{ recipe.difficult }}</td>
+      <td>{{ recipe.event }}</td>
     </tr>
     {% endfor %}
   </table>

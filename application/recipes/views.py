@@ -17,6 +17,7 @@ def recipes_create():
 
     r = Recipe(form.name.data)
     r.difficult = form.difficult.data
+    r.event = form.event.data
 
     db.session().add(r)
     db.session().commit()
