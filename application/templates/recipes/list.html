@@ -4,10 +4,12 @@
   <table>
     <tr>
       <th>Resepti</th>
+      <th>Vaikeus</th>
     </tr>
     {% for recipe in recipes %}
     <tr>
       <td>{{ recipe.name }}</td>
+      <td>{{ recipe.difficult }}</td>
     </tr>
     {% endfor %}
   </table>
