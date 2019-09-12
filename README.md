@@ -1,9 +1,8 @@
 # elektroninen kokkikirja
 
 Aiheeni on jälkiruokaohjeita sisältävä sovellus, josta käytäjä voi hakea ohjeita eri hakuperusteilla 
-(ainesosat, vaikeus, tilaisuus). Kirjautunut käyttäjä pääsee lisäämään tietokantaan reseptejä sekä 
-kirjoittamaan kommentteja ruokaohjeisiin. Ylläpitäjä pystyy poistamaan reseptejä ja kommentteja ja 
-lisäämään ohjeisiin hakuperuste-tunnisteita. 
+(raaka-aine, vaikeus, tilaisuus). Kirjautunut käyttäjä pääsee lisäämään tietokantaan reseptejä sekä 
+kirjoittamaan kommentteja ruokaohjeisiin. Käyttäjä pystyy poistamaan omia reseptejä ja kommentteja, minkä lisäksi ylläpitäjä pystyy muokkaamaan ja poistamaan reseptejä ja lisäämään ohjeisiin hakuperuste-tunnisteita. 
 
 Toiminnot:
 - kirjautuminen
@@ -12,7 +11,7 @@ Toiminnot:
 - kommentin lisääminen ohjeeseen
 - ohjeiden poistaminen
 
-[Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/reseptisovellus_tietokantakaavio.pdf)
+[Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/reseptikaavio.png)
 
 **Sovellus Herokussa**
 
