@@ -6,5 +6,6 @@
 - Käytäjänä pystyn kommentoimaan muiden lisäämiä reseptejä ja muokkaamaan kommenttejani
 - Käyttäjänä pystyn poistamaan oman kommentin
 
-- Ylläpitäjänä pystyn muokkaamaan ja poistamaan kaikkien käyttäjien reseptejä ja kommentteja
+- Ylläpitäjänä pystyn muokkaamaan ja poistamaan kaikkien käyttäjien reseptejä 
+- Ylläpitäjänä pystyn poistamaan käyttäjien kommentteja, jos ne esimerkiksi ovat loukkaavia
 - Ylläpitäjänä pystyn hallitsemaan jäsenten tietoja
