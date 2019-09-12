@@ -11,6 +11,14 @@ def recipes_index():
 def recipes_form():
     return render_template("recipes/new.html", form = RecipeForm())
 
+@app.route("/recipes/<recipe_id>/", methods=["GET"])
+def recipes_show_single(recipe_id):
+   
+    s = Recipe.query.get(recipe_id)
+    
+    
+    return render_template("recipes/single.html", recipe = s)
+
 @app.route("/recipes/", methods=["POST"])
 def recipes_create():
     form = RecipeForm(request.form)

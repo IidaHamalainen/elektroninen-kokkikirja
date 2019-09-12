@@ -1,14 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<p> Klikkaamalla ohjeen numeroa näet sen sivun</p>
   <table>
     <tr>
+      <th>Numero</th>
       <th>Resepti</th>
       <th>Vaikeus</th>
       <th>Tilaisuus</th>
     </tr>
     {% for recipe in recipes %}
     <tr>
+      <td><a href="{{ url_for('recipes_show_single', recipe_id=recipe.id) }}">{{ recipe.id }}</td>
       <td>{{ recipe.name }}</td>
       <td>{{ recipe.difficult }}</td>
       <td>{{ recipe.event }}</td>
@@ -16,3 +19,5 @@
     {% endfor %}
   </table>
 {% endblock %}
+
+
