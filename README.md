@@ -11,7 +11,7 @@ Toiminnot:
 - kommentin lisääminen ohjeeseen
 - ohjeiden poistaminen
 
-[Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/reseptikaavio.png)
+[Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/tietokantakaavio.png)
 
 **Sovellus Herokussa**
 
