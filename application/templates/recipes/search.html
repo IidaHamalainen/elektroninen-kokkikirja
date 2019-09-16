@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<p> To be done...</p>
+<form method="POST" action="{{ url_for('recipes_search') }}">
+ <dt>{{ form.select.label }}
+     <p> {{form.search.label }}
+ </dl>
+ </p><input type="submit" value="Etsi"/>
+</form>
+
+{% endblock %}

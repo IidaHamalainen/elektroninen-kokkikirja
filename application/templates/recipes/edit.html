@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+
+<p>Muokkaa ohjetta</p>
+
+<form method="POST" action="{{ url_for('recipe_edit', recipe_id=recipe.id) }}">
+  <table>
+    <tr>
+      <td>
+	{{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.difficult.label }}
+      </td>
+      <td>
+        {{ form.difficult }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.event.label }}
+      </td>
+      <td>
+        {{ form.event }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+  	<input type="submit" value="Tallenna muutokset"/>
+      </td>
+    </tr>
+</form>
+{% endblock %}

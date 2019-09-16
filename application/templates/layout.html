@@ -6,17 +6,15 @@
   </head>
 
   <body>
+    <ul>
+      <li><a href="{{ url_for('recipes_index') }}">Listaa reseptit</a></li>
+      <li><a href="{{ url_for('recipes_form') }}">Lisää uusi ohje</a></li>
+      <li><a href="{{ url_for('recipes_search') }}">Etsi ohjetta</a></li>
+    </ul>
     {% block body %}
       <p>
         Content.
       </p>
-    {% endblock %}
-
-    <ul>
-      <li><a href="{{ url_for('recipes_index') }}">Listaa reseptit</a></li>
-      <li><a href="{{ url_for('recipes_form') }}">Lisää uusi ohje</a></li>
-    </ul>
-
-    
+    {% endblock %} 
   </body>
 </html>

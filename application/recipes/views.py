@@ -2,10 +2,15 @@ from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.recipes.models import Recipe
 from application.recipes.forms import RecipeForm
+from application.recipes.forms import SearchForm
 
 @app.route("/recipes", methods=["GET"])
 def recipes_index():
     return render_template("recipes/list.html", recipes = Recipe.query.all())
+
+@app.route("/recipes/results", methods=["GET"])
+def recipes_search():
+    return render_template("recipes/search.html", form = SearchForm())
 
 @app.route("/recipes/new/")
 def recipes_form():
@@ -16,8 +21,18 @@ def recipes_show_single(recipe_id):
    
     s = Recipe.query.get(recipe_id)
     
-    
     return render_template("recipes/single.html", recipe = s)
+
+@app.route("/recipes/<recipe_id>/edit", methods=["GET", "POST"])
+def recipe_edit(recipe_id):
+    r = Recipe.query.get(recipe_id)
+    form = RecipeForm(formdata=request.form, obj=r)
+
+    if request.method == "POST":
+        save_changes(r, form)
+        return redirect(url_for("recipes_index"))
+
+    return render_template("recipes/edit.html", recipe = r, form=form)
 
 @app.route("/recipes/", methods=["POST"])
 def recipes_create():
@@ -30,4 +45,23 @@ def recipes_create():
     db.session().add(r)
     db.session().commit()
   
+    return redirect(url_for("recipes_index"))
+
+@app.route("/delete/<recipe_id>", methods=["GET", "POST"])
+def delete(recipe_id):
+    r = Recipe.query.get(recipe_id)
+
+    if request.method == "POST":
+        db.session().delete(r)
+        db.session().commit()
+        return redirect(url_for("recipes_index"))
+    return render_template("recipes/delete_recipe.html")
+
+def save_changes(recipe, form, new = False):
+    
+    recipe.name = form.name.data
+    recipe.difficult = form.difficult.data
+    recipe.event = form.event.data
+
+    db.session().commit()
     return redirect(url_for("recipes_index"))
