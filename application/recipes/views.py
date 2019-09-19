@@ -1,5 +1,7 @@
 from application import app, db
-from flask import redirect, render_template, request, url_for
+from flask import redirect, render_template, request, url_for, flash
+from flask_login import login_required
+
 from application.recipes.models import Recipe
 from application.recipes.forms import RecipeForm
 from application.recipes.forms import SearchForm
@@ -8,6 +10,7 @@ from application.recipes.forms import SearchForm
 def recipes_index():
     return render_template("recipes/list.html", recipes = Recipe.query.all())
 
+#Reseptien etsiminen
 @app.route("/recipes/search", methods=["GET", "POST"])
 def recipes_search():
     search = SearchForm(request.form)
@@ -38,16 +41,19 @@ def recipes_results(search):
         results = qry.all()
  
     if not results: 
-        return redirect(url_for("recipes_index"))
+        flash("Ei tuloksia")
+        return redirect(url_for("recipes_search"))
 
     else:
         return render_template("recipes/list.html", recipes=results)
 
-
+#Uuden reseptin lisääminen
 @app.route("/recipes/new/")
+@login_required
 def recipes_form():
     return render_template("recipes/new.html", form = RecipeForm())
 
+#Yksittäisen reseptin näyttäminen
 @app.route("/recipes/<recipe_id>/", methods=["GET"])
 def recipes_show_single(recipe_id):
    
@@ -55,7 +61,9 @@ def recipes_show_single(recipe_id):
     
     return render_template("recipes/single.html", recipe = s)
 
+#Reseptin muokkaaminen
 @app.route("/recipes/<recipe_id>/edit", methods=["GET", "POST"])
+@login_required
 def recipe_edit(recipe_id):
     r = Recipe.query.get(recipe_id)
     form = RecipeForm(formdata=request.form, obj=r)
@@ -66,9 +74,23 @@ def recipe_edit(recipe_id):
 
     return render_template("recipes/edit.html", recipe = r, form=form)
 
+def save_changes(recipe, form, new = False):
+    
+    recipe.name = form.name.data
+    recipe.difficult = form.difficult.data
+    recipe.event = form.event.data
+
+    db.session().commit()
+    return redirect(url_for("recipes_index"))
+
+#Reseptin luominen tietokantaan
 @app.route("/recipes/", methods=["POST"])
+@login_required
 def recipes_create():
     form = RecipeForm(request.form)
+
+    if not form.validate():
+        return render_template("recipes/new.html", form = form)
 
     r = Recipe(form.name.data)
     r.difficult = form.difficult.data
@@ -79,7 +101,9 @@ def recipes_create():
   
     return redirect(url_for("recipes_index"))
 
+#reseptin poistaminen
 @app.route("/delete/<recipe_id>", methods=["GET", "POST"])
+@login_required
 def delete(recipe_id):
     r = Recipe.query.get(recipe_id)
 
@@ -89,11 +113,4 @@ def delete(recipe_id):
         return redirect(url_for("recipes_index"))
     return render_template("recipes/delete_recipe.html")
 
-def save_changes(recipe, form, new = False):
-    
-    recipe.name = form.name.data
-    recipe.difficult = form.difficult.data
-    recipe.event = form.event.data
 
-    db.session().commit()
-    return redirect(url_for("recipes_index"))

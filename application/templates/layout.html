@@ -6,6 +6,16 @@
   </head>
 
   <body>
+    {% if current_user.is_authenticated %}
+    <p> 
+    Kirjautunut nimellä {{current_user.name }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+</p>
+    {% else %}
+    <a href="{{ url_for('auth_login') }}">Kirjaudu</a>
+    <p></p>
+    <a href="{{ url_for('account_form') }}">Luo uusi tunnus</a>
+    {% endif %}
+
     <ul>
       <li><a href="{{ url_for('recipes_index') }}">Listaa reseptit</a></li>
       <li><a href="{{ url_for('recipes_form') }}">Lisää uusi ohje</a></li>
@@ -16,5 +26,15 @@
         Content.
       </p>
     {% endblock %} 
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+       <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+   {% endwith %}
   </body>
 </html>
