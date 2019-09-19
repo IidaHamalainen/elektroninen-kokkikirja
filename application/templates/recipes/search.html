@@ -1,11 +1,15 @@
 {% extends "layout.html" %}
   
 {% block body %}
-<p> To be done...</p>
+
+
+{% from "_formhelpers.html" import render_field %}
 <form method="POST" action="{{ url_for('recipes_search') }}">
- <dt>{{ form.select.label }}
-     <p> {{form.search.label }}
- </dl>
+  <dl>
+    {{ render_field(form.select) }}
+    <p>
+    {{ render_field(form.search) }}
+  </dl>
  </p><input type="submit" value="Etsi"/>
 </form>
 

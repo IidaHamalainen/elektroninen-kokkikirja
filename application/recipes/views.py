@@ -8,9 +8,41 @@ from application.recipes.forms import SearchForm
 def recipes_index():
     return render_template("recipes/list.html", recipes = Recipe.query.all())
 
-@app.route("/recipes/results", methods=["GET"])
+@app.route("/recipes/search", methods=["GET", "POST"])
 def recipes_search():
+    search = SearchForm(request.form)
+    if request.method == "POST":
+        return recipes_results(search)
+
     return render_template("recipes/search.html", form = SearchForm())
+
+@app.route("/recipes/results", methods=["GET"])
+def recipes_results(search):
+    results = []
+    search_string = search.data["search"]
+
+    if search_string:
+        if search.data["select"] == "Nimi":
+            results = Recipe.query.filter(Recipe.name.contains(search_string)).all()
+    
+    if search_string:
+        if search.data["select"] == "Vaikeustaso":
+            results = Recipe.query.filter(Recipe.difficult.contains(search_string)).all()        
+
+    if search_string:
+        if search.data["select"] == "Tilaisuus":
+            results = Recipe.query.filter(Recipe.event.contains(search_string)).all()
+    
+    if search.data["search"] == "":
+        qry = db_session.query(Recipe)
+        results = qry.all()
+ 
+    if not results: 
+        return redirect(url_for("recipes_index"))
+
+    else:
+        return render_template("recipes/list.html", recipes=results)
+
 
 @app.route("/recipes/new/")
 def recipes_form():
