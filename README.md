@@ -18,3 +18,14 @@ Toiminnot:
 **Sovellus Herokussa**
 
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
+
+#### Käyttäjätunnukset
+19.9. Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa ohjeita. Toistaiseksi kaikilla käyttäjillä on nämä samat oikeudet, eli ei ole vielä ylläpitäjä-käyttäjää. Sovelluksessa pystyy luomaan uuden käyttäjän.
+
+Tietokantaan tallennettuja käyttäjiä:
+- xavier, käyttäjätunnus xyz, salasana abcd
+- Tessa Testi, käyttäjätunnus tessa, salasana tessa
+
+Herokussa täytyy ensimmäiseksi luoda käyttäjä, sillä sinne ei vielä ole lisätty tietokantaa vaan sessio alkaa tyhjästä. Tämä tarkoittaa myös että reseptejä ei ole valmiina, vaan niiden lisäystäkin pääsee kokeilemaan ennen kuin hakee ohjeita.
+
+
