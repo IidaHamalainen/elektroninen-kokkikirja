@@ -10,5 +10,4 @@ class Base(db.Model):
         onupdate=db.func.current_timestamp())
 
 
-#yhteenvetokyselyt
 
