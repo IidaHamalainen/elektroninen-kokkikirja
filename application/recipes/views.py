@@ -1,6 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for, flash
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application.recipes.models import Recipe
 from application.recipes.forms import RecipeForm
@@ -95,6 +95,7 @@ def recipes_create():
     r = Recipe(form.name.data)
     r.difficult = form.difficult.data
     r.event = form.event.data
+    r.account_id = current_user.id
 
     db.session().add(r)
     db.session().commit()
