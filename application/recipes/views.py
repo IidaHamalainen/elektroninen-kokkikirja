@@ -6,6 +6,9 @@ from application.recipes.models import Recipe
 from application.recipes.forms import RecipeForm
 from application.recipes.forms import SearchForm
 
+from application.comments.forms import CommentForm
+from application.comments.models import Comment
+
 @app.route("/recipes", methods=["GET"])
 def recipes_index():
     return render_template("recipes/list.html", recipes = Recipe.query.all())
@@ -28,12 +31,10 @@ def recipes_results(search):
         if search.data["select"] == "Nimi":
             results = Recipe.query.filter(Recipe.name.contains(search_string)).all()
     
-    if search_string:
-        if search.data["select"] == "Vaikeustaso":
+        elif search.data["select"] == "Vaikeustaso":
             results = Recipe.query.filter(Recipe.difficult.contains(search_string)).all()        
-
-    if search_string:
-        if search.data["select"] == "Tilaisuus":
+        
+        elif search.data["select"] == "Tilaisuus":
             results = Recipe.query.filter(Recipe.event.contains(search_string)).all()
     
     if search.data["search"] == "":
@@ -58,8 +59,10 @@ def recipes_form():
 def recipes_show_single(recipe_id):
    
     s = Recipe.query.get(recipe_id)
+
+    comments = Comment.query.filter(Comment.recipe_id.contains(s.id)).all()
     
-    return render_template("recipes/single.html", recipe = s)
+    return render_template("recipes/single.html", recipe = s, comments=comments)
 
 #Reseptin muokkaaminen
 @app.route("/recipes/<recipe_id>/edit", methods=["GET", "POST"])
@@ -82,6 +85,7 @@ def save_changes(recipe, form, new = False):
 
     db.session().commit()
     return redirect(url_for("recipes_index"))
+
 
 #Reseptin luominen tietokantaan
 @app.route("/recipes/", methods=["POST"])

@@ -14,3 +14,4 @@ class Recipe(Base):
         self.name = name
         self.difficult = "Helppo"
         self.event = 'Arki'
+

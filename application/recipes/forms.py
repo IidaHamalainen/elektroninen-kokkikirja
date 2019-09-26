@@ -13,6 +13,7 @@ class RecipeForm(FlaskForm):
 class SearchForm(FlaskForm):
     choices = [("Nimi", "Nimi"), ("Vaikeustaso", "Vaikeustaso"), ("Tilaisuus", "Tilaisuus")]
     select = SelectField("Etsi reseptiä:", choices=choices)
+    
     search = StringField("")
 
     class Meta:
