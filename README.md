@@ -5,11 +5,11 @@ Aiheeni on jälkiruokaohjeita sisältävä sovellus, josta käytäjä voi hakea 
 kirjoittamaan kommentteja ruokaohjeisiin. Käyttäjä pystyy muokaamaan ja poistamaan omia reseptejä ja kommentteja, minkä lisäksi ylläpitäjä pystyy muokkaamaan ja poistamaan reseptejä ja poistamaan kommentteja. Ylläpitäjä myös hallinnoi käyttäjiä. 
 
 Toiminnot:
-- kirjautuminen
-- ruokaohjeen lisääminen
-- ohjeiden näyttäminen eri hakuperusteilla
+- kirjautuminen ja uuden käyttäjätunnuksen luominen
+- ruokaohjeen lisääminen, muokkaaminen ja poistaminen
+- ohjeiden hakeminen
 - kommentin lisääminen ohjeeseen
-- ohjeiden poistaminen
+
 
 [Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/tietokantakaavio.png)
 
@@ -20,12 +20,14 @@ Toiminnot:
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
 
 #### Käyttäjätunnukset
-19.9. Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa ohjeita. Toistaiseksi kaikilla käyttäjillä on nämä samat oikeudet, eli ei ole vielä ylläpitäjä-käyttäjää. Sovelluksessa pystyy luomaan uuden käyttäjän.
+Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa ohjeita. Käyttäjä voi myös lisätä kommentin ohjeeseen. Toistaiseksi kaikilla käyttäjillä on nämä samat oikeudet, eli ei ole vielä ylläpitäjä-käyttäjää. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
 
-Tietokantaan tallennettuja käyttäjiä:
-- xavier, käyttäjätunnus xyz, salasana abcd
-- Tessa Testi, käyttäjätunnus tessa, salasana tessa
+Herokun tietokantaan tallennettuja käyttäjiä:
 
-Herokussa täytyy ensimmäiseksi luoda käyttäjä, sillä sinne ei vielä ole lisätty tietokantaa vaan sessio alkaa tyhjästä. Tämä tarkoittaa myös että reseptejä ei ole valmiina, vaan niiden lisäystäkin pääsee kokeilemaan ennen kuin hakee ohjeita.
+- Tessa Testi, käyttäjätunnus tessa, salasana testi
+- Anna, käyttäjätunnus ansku, salasana abcd
+- Matti, käyttäjätunnus sieni, salasana salainen
 
+##### Huomioita/ korjattavia:
+- Herokussa ohjetta haettaessa alkukirjaimen koko merkitsee, Pulla ei siis löydyhakusanalla pulla, vaikka paikallisessa versiossa tämä toimii.
 
