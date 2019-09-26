@@ -60,7 +60,8 @@ def recipes_show_single(recipe_id):
    
     s = Recipe.query.get(recipe_id)
 
-    comments = Comment.query.filter(Comment.recipe_id.contains(s.id)).all()
+    # comments = Comment.query.filter(Comment.recipe_id.contains(s.id)).all()
+    comments = Comment.query.join(Recipe).filter(Recipe.id == s.id)
     
     return render_template("recipes/single.html", recipe = s, comments=comments)
 
