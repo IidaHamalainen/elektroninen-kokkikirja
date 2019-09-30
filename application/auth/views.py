@@ -40,7 +40,7 @@ def account_create():
     if not form.validate():
         return render_template("auth/new_user.html", form = form)
 
-    account = User(form.name.data, form.username.data, form.password.data)
+    account = User(form.name.data, form.username.data, form.password.data, user_role = "ADMIN")
    
 
     db.session().add(account)

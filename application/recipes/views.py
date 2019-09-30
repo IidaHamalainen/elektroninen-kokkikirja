@@ -1,6 +1,7 @@
-from application import app, db
 from flask import redirect, render_template, request, url_for, flash
-from flask_login import login_required, current_user
+from flask_login import current_user
+
+from application import app, db, login_manager, login_required
 
 from application.recipes.models import Recipe
 from application.recipes.forms import RecipeForm
@@ -50,7 +51,7 @@ def recipes_results(search):
 
 #Uuden reseptin lisääminen
 @app.route("/recipes/new/")
-@login_required
+@login_required(role="USER")
 def recipes_form():
     return render_template("recipes/new.html", form = RecipeForm())
 
@@ -60,17 +61,19 @@ def recipes_show_single(recipe_id):
    
     s = Recipe.query.get(recipe_id)
 
-    # comments = Comment.query.filter(Comment.recipe_id.contains(s.id)).all()
     comments = Comment.query.join(Recipe).filter(Recipe.id == s.id)
     
     return render_template("recipes/single.html", recipe = s, comments=comments)
 
 #Reseptin muokkaaminen
 @app.route("/recipes/<recipe_id>/edit", methods=["GET", "POST"])
-@login_required
+@login_required(role="USER")
 def recipe_edit(recipe_id):
     r = Recipe.query.get(recipe_id)
     form = RecipeForm(formdata=request.form, obj=r)
+
+    if r.account_id != current_user.id:
+        return login_manager.unauthorized()
 
     if request.method == "POST":
         save_changes(r, form)
@@ -90,7 +93,7 @@ def save_changes(recipe, form, new = False):
 
 #Reseptin luominen tietokantaan
 @app.route("/recipes/", methods=["POST"])
-@login_required
+@login_required(role="USER")
 def recipes_create():
     form = RecipeForm(request.form)
 
@@ -109,7 +112,7 @@ def recipes_create():
 
 #reseptin poistaminen
 @app.route("/delete/<recipe_id>", methods=["GET", "POST"])
-@login_required
+@login_required(role="USER")
 def delete(recipe_id):
     r = Recipe.query.get(recipe_id)
 

@@ -7,8 +7,12 @@
   <p> Tilaisuus: {{ recipe.event }}</p>
 
   <p> Ruokaohje tulee tähän</p>
-  <p><a href="{{ url_for('recipe_edit', recipe_id=recipe.id) }}">Muokkaa ohjetta</a></p>
-  <p><a href="{{ url_for('delete', recipe_id=recipe.id) }}">Poista ohje</a></p>
+  
+  {% if current_user.id == recipe.account_id %}
+    <p><a href="{{ url_for('recipe_edit', recipe_id=recipe.id) }}">Muokkaa ohjetta</a></p>
+    <p><a href="{{ url_for('delete', recipe_id=recipe.id) }}">Poista ohje</a></p>
+  {% endif %}
+   
   <p><a href="{{ url_for('comment_form', recipe_id=recipe.id) }}">Kommentoi</a></p>
 
   <table>
@@ -21,8 +25,8 @@
       <td>{{ comment.comment_text }}</td>
       <td>{{ comment.account_id }}</td>
     </tr>
-  {% endfor %}
- </table>
+    {% endfor %}
+  </table>
 {% endblock %}
 
     

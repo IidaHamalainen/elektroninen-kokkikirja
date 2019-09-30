@@ -1,6 +1,6 @@
-from application import app, db
+from application import app, db, login_required
 from flask import redirect, render_template, request, url_for, flash
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 from application.recipes.models import Recipe
 from application.recipes.forms import RecipeForm
@@ -11,14 +11,14 @@ from application.comments.models import Comment
 
 
 @app.route("/recipes/<recipe_id>/comment")
-@login_required
+@login_required(role="USER")
 def comment_form(recipe_id):
     r = Recipe.query.get(recipe_id)
     
     return render_template("comments/new_comment.html", form = CommentForm(), recipe = r)
 
 @app.route("/comments/<recipe_id>", methods=["POST"])
-@login_required
+@login_required(role="USER")
 def comment_create(recipe_id):
     form = CommentForm(request.form)
     recipe = Recipe.query.get(recipe_id) 
