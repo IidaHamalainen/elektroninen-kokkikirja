@@ -20,7 +20,7 @@ Toiminnot:
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
 
 #### Käyttäjätunnukset
-Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa ohjeita. Käyttäjä voi myös lisätä kommentin ohjeeseen. Toistaiseksi kaikilla käyttäjillä on nämä samat oikeudet, eli ei ole vielä ylläpitäjä-käyttäjää. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
+Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa itse lisäämiään ohjeita. Käyttäjä voi myös lisätä kommentin omaan tai muiden lisäämään ohjeeseen. Toistaiseksi kaikilla käyttäjillä on nämä samat oikeudet, eli ei ole vielä ylläpitäjä-käyttäjää. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
 
 Herokun tietokantaan tallennettuja käyttäjiä:
 
