@@ -10,9 +10,10 @@ from application.recipes.forms import SearchForm
 from application.comments.forms import CommentForm
 from application.comments.models import Comment
 
-@app.route("/recipes", methods=["GET"])
-def recipes_index():
+@app.route("/recipes/list", methods=["GET"])
+def recipes_list():
     return render_template("recipes/list.html", recipes = Recipe.query.all())
+
 
 #Reseptien etsiminen
 @app.route("/recipes/search", methods=["GET", "POST"])
@@ -77,7 +78,7 @@ def recipe_edit(recipe_id):
 
     if request.method == "POST":
         save_changes(r, form)
-        return redirect(url_for("recipes_index"))
+        return redirect(url_for("recipes_list"))
 
     return render_template("recipes/edit.html", recipe = r, form=form)
 
@@ -88,7 +89,7 @@ def save_changes(recipe, form, new = False):
     recipe.event = form.event.data
 
     db.session().commit()
-    return redirect(url_for("recipes_index"))
+    return redirect(url_for("recipes_list"))
 
 
 #Reseptin luominen tietokantaan
@@ -108,7 +109,7 @@ def recipes_create():
     db.session().add(r)
     db.session().commit()
   
-    return redirect(url_for("recipes_index"))
+    return redirect(url_for("recipes_list"))
 
 #reseptin poistaminen
 @app.route("/delete/<recipe_id>", methods=["GET", "POST"])
@@ -119,7 +120,7 @@ def delete(recipe_id):
     if request.method == "POST":
         db.session().delete(r)
         db.session().commit()
-        return redirect(url_for("recipes_index"))
+        return redirect(url_for("recipes_list"))
     return render_template("recipes/delete_recipe.html")
 
 

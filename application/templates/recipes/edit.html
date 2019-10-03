@@ -8,7 +8,7 @@
   <table>
     <tr>
       <td>
-	{{ form.name.label }}
+        <label for="name"">Reseptin nimi</label>
       </td>
       <td>
         {{ form.name }}
@@ -16,7 +16,7 @@
     </tr>
     <tr>
       <td>
-        {{ form.difficult.label }}
+        <label for="difficult">Vaikeustaso</label>
       </td>
       <td>
         {{ form.difficult }}
@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <td>
-        {{ form.event.label }}
+        <label for="event">Tilaisuus</label>
       </td>
       <td>
         {{ form.event }}
@@ -32,7 +32,7 @@
     </tr>
     <tr>
       <td colspan="2">
-  	<input type="submit" value="Tallenna muutokset"/>
+          <button type="submit" class="btn btn-primary">Tallenna muutokset</button>
       </td>
     </tr>
   </table>

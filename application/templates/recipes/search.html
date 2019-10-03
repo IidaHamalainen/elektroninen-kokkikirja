@@ -6,11 +6,11 @@
 {% from "_formhelpers.html" import render_field %}
 <form method="POST" action="{{ url_for('recipes_search') }}">
   <dl>
-    {{ render_field(form.select) }}
-    <p>
+    {{ render_field(form.select) }} 
     {{ render_field(form.search) }}
   </dl>
- </p><input type="submit" value="Etsi"/>
+ 
+  <button type="submit" class="btn btn-primary">Etsi</button>
 </form>
 
 {% endblock %}
