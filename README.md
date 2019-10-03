@@ -28,8 +28,8 @@ Herokun tietokantaan tallennettuja käyttäjiä:
 - Anna, käyttäjätunnus ansku, salasana abcd
 - Matti, käyttäjätunnus sieni, salasana salainen
 
-- Admin, käyttäjätunnus admin, salasana admin
-toistaiseksi Admin näkee kaikissa ohjeissa muokkaa ja poista -toimintojen linkit, joita tavalliset käyttäjät eivät näe muiden ohjeissa, mutta ne eivät vielä ole toiminnassa adminina.
+- Admin, käyttäjätunnus admin, salasana admin. 
+Toistaiseksi Admin näkee kaikissa ohjeissa muokkaa ja poista -toimintojen linkit, joita tavalliset käyttäjät eivät näe muiden ohjeissa, mutta ne eivät vielä ole toiminnassa adminina.
 
 ##### Huomioita/ korjattavia:
 - Herokussa ohjetta haettaessa alkukirjaimen koko merkitsee, Pulla ei siis löydyhakusanalla pulla, vaikka paikallisessa versiossa tämä toimii.
