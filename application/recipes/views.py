@@ -52,7 +52,7 @@ def recipes_results(search):
 
 #Uuden reseptin lisääminen
 @app.route("/recipes/new/")
-@login_required(role="USER")
+@login_required(role="ANY")
 def recipes_form():
     return render_template("recipes/new.html", form = RecipeForm())
 
@@ -68,7 +68,7 @@ def recipes_show_single(recipe_id):
 
 #Reseptin muokkaaminen
 @app.route("/recipes/<recipe_id>/edit", methods=["GET", "POST"])
-@login_required(role="USER")
+@login_required(role="ANY")
 def recipe_edit(recipe_id):
     r = Recipe.query.get(recipe_id)
     form = RecipeForm(formdata=request.form, obj=r)
@@ -87,6 +87,7 @@ def save_changes(recipe, form, new = False):
     recipe.name = form.name.data
     recipe.difficult = form.difficult.data
     recipe.event = form.event.data
+    recipe.text = form.text.data
 
     db.session().commit()
     return redirect(url_for("recipes_list"))
@@ -94,17 +95,18 @@ def save_changes(recipe, form, new = False):
 
 #Reseptin luominen tietokantaan
 @app.route("/recipes/", methods=["POST"])
-@login_required(role="USER")
+@login_required(role="ANY")
 def recipes_create():
     form = RecipeForm(request.form)
 
     if not form.validate():
         return render_template("recipes/new.html", form = form)
 
-    r = Recipe(form.name.data)
+    r = Recipe(form.name.data, form.text.data)
     r.difficult = form.difficult.data
     r.event = form.event.data
     r.account_id = current_user.id
+    
 
     db.session().add(r)
     db.session().commit()
@@ -113,7 +115,7 @@ def recipes_create():
 
 #reseptin poistaminen
 @app.route("/delete/<recipe_id>", methods=["GET", "POST"])
-@login_required(role="USER")
+@login_required(role="ANY")
 def delete(recipe_id):
     r = Recipe.query.get(recipe_id)
 

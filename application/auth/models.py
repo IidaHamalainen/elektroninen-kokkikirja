@@ -33,7 +33,10 @@ class User(Base):
         return True
 
     def roles(self):
-        return ["USER"]
+        if self.user_role is True:
+            return "ADMIN"
+        if self.user_role is False:
+            return "USER"
     
     
     #yhteenvetokyselyt

@@ -11,14 +11,14 @@ from application.comments.models import Comment
 
 
 @app.route("/recipes/<recipe_id>/comment")
-@login_required(role="USER")
+@login_required(role="ANY")
 def comment_form(recipe_id):
     r = Recipe.query.get(recipe_id)
     
     return render_template("comments/new_comment.html", form = CommentForm(), recipe = r)
 
 @app.route("/comments/<recipe_id>", methods=["POST"])
-@login_required(role="USER")
+@login_required(role="ANY")
 def comment_create(recipe_id):
     form = CommentForm(request.form)
     recipe = Recipe.query.get(recipe_id) 

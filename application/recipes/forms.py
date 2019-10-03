@@ -6,7 +6,8 @@ class RecipeForm(FlaskForm):
     name = StringField("Reseptin nimi", [validators.Length(min=2, max=20)])
     difficult = SelectField(u'Vaikeustaso', choices=[('Helppo','Helppo'),('Keskitaso','Keskitaso'),('Vaikea','Vaikea')])
     event = SelectField(u'Tilaisuus', choices=[('Arki','Arki'),('Juhla','Juhla')])
- 
+    text = StringField("Ohje", [validators.DataRequired()])
+    
     class Meta:
         csrf = False
 
@@ -14,7 +15,7 @@ class SearchForm(FlaskForm):
     choices = [("Nimi", "Nimi"), ("Vaikeustaso", "Vaikeustaso"), ("Tilaisuus", "Tilaisuus")]
     select = SelectField("Etsi reseptiä:", choices=choices)
     
-    search = StringField("", [validators.Length(min=2)])
+    search = StringField("", [validators.DataRequired()])
 
     class Meta:
         csrf = False

@@ -2,13 +2,16 @@
 
 {% block body %}
   
-  <p> Ohje: {{ recipe.name }}</p>
+  <h4> Ohje: {{ recipe.name }}</h4>
   <p> Vaikeus: {{ recipe.difficult }}</p>
   <p> Tilaisuus: {{ recipe.event }}</p>
+  <p>ohjeen loi: {{ recipe.account_id}}</p>
+  <h5>Valmistusohje</h5>
+  <p> {{recipe.text }}</p>
 
-  <p> Ruokaohje tulee tähän</p>
   
-  {% if current_user.id == recipe.account_id %}
+  
+  {% if current_user.id == recipe.account_id or current_user.user_role == "ADMIN" %}
     <p><a href="{{ url_for('recipe_edit', recipe_id=recipe.id) }}">Muokkaa ohjetta</a></p>
     <p><a href="{{ url_for('delete', recipe_id=recipe.id) }}">Poista ohje</a></p>
   {% endif %}
