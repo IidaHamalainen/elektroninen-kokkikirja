@@ -13,6 +13,8 @@ Toiminnot:
 
 [Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/tietokantakaavio.png)
 
+[Tietokannan rakenteen kuvaus](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/tietokantarakenteen%20kuvaus.md)
+
 [Käyttötapaukset](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/K%C3%A4ytt%C3%B6tapaukset.md)
 
 **Sovellus Herokussa**
