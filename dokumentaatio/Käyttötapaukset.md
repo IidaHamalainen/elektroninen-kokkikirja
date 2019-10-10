@@ -30,9 +30,19 @@ UPDATE Recipe SET event='Juhla' WHERE id=1;
 ```
 DELETE FROM Recipe WHERE id=1;
 ```
-- Käytäjänä pystyn kommentoimaan muiden lisäämiä reseptejä ja muokkaamaan kommenttejani
+- Käytäjänä pystyn kommentoimaan muiden lisäämiä reseptejä
+```
+INSERT INTO Comment(id, comment_text, account_id, recipe_id) 
+  VALUES(3,'Hyvä ohje!', 2, 1);
+```
+
 - Käyttäjänä pystyn poistamaan oman kommentin
+```
+DELETE FROM Comment WHERE id=3;
+```
 
 - Ylläpitäjänä pystyn muokkaamaan ja poistamaan kaikkien käyttäjien reseptejä 
-- Ylläpitäjänä pystyn poistamaan käyttäjien kommentteja, jos ne esimerkiksi ovat loukkaavia
-- Ylläpitäjänä pystyn hallitsemaan jäsenten tietoja
+- Ylläpitäjänä pystyn poistamaan käyttäjien kommentteja
+
+- Ylläpitäjänä pystyn hallitsemaan jäsenten tietoja.
+Tätä ei ole vielä totetutettu
