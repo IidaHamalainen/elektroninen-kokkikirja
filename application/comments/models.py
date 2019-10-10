@@ -10,4 +10,6 @@ class Comment(Base):
 
     def __init__(self, comment_text):
         self.comment_text = comment_text
+
+    
         

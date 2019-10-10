@@ -37,7 +37,9 @@ class User(Base):
             return "ADMIN"
         if self.user_role is False:
             return "USER"
-    
+
+    def get_username(account_id):
+        return self.username
     
     #yhteenvetokyselyt
 

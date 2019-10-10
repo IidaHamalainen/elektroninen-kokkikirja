@@ -48,7 +48,10 @@ def login_required(role="ANY"):
                     if user_role == role:
                         unauthorized = False
                         break
-
+            
+            if role == "ADMIN":
+                unauthorized = False
+                
             if unauthorized:
                 return login_manager.unauthorized()
 
@@ -68,6 +71,9 @@ from application.auth import views
 
 from application.comments import models
 from application.comments import views
+
+from application.ingredients import models
+from application.ingredients import views
 
 #kirjautuminen
 from application.auth.models import User

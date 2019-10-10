@@ -3,8 +3,6 @@ from flask import redirect, render_template, request, url_for, flash
 from flask_login import current_user
 
 from application.recipes.models import Recipe
-from application.recipes.forms import RecipeForm
-from application.recipes.forms import SearchForm
 
 from application.comments.forms import CommentForm
 from application.comments.models import Comment
@@ -22,7 +20,6 @@ def comment_form(recipe_id):
 def comment_create(recipe_id):
     form = CommentForm(request.form)
     recipe = Recipe.query.get(recipe_id) 
-    
 
     if not form.validate():
         return render_template("comments/new_comment.html", form = form,  recipe_id = recipe.id)
@@ -35,3 +32,22 @@ def comment_create(recipe_id):
     db.session().commit()
   
     return redirect(url_for("recipes_show_single", recipe_id = recipe.id))
+
+@app.route("/comments/delete/<comment_id>", methods=["GET", "POST"] )
+@login_required(role="ANY")
+def comment_delete(comment_id):
+
+    c = Comment.query.get(comment_id)
+
+    if c.account_id != current_user.id:
+        if current_user.user_role == "ADMIN":
+            pass
+        else:
+            return login_manager.unauthorized()
+
+    if request.method == "POST":
+        db.session().delete(c)
+        db.session().commit()
+        return redirect(url_for("recipes_show_single", recipe_id = c.recipe_id))
+    
+    return render_template("comments/delete_comment.html")

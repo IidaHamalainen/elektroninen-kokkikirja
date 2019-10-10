@@ -2,10 +2,12 @@
 
 {% block body %}
   
-  <h4> Ohje: {{ recipe.name }}</h4>
-  <p> Vaikeus: {{ recipe.difficult }}</p>
-  <p> Tilaisuus: {{ recipe.event }}</p>
-  <p>ohjeen loi: {{ recipe.account_id}}</p>
+  <h4>Ohje: {{ recipe.name }}</h4>
+  <p>Vaikeus: {{ recipe.difficult }}</p>
+  <p>Tilaisuus: {{ recipe.event }}</p>
+  <p>ohjeen loi: {{ recipe.account_id }}</p>
+  
+
   <h5>Valmistusohje</h5>
   <p> {{recipe.text }}</p>
 
@@ -27,9 +29,15 @@
     <tr>
       <td>{{ comment.comment_text }}</td>
       <td>{{ comment.account_id }}</td>
+    
+      <td>{% if current_user.id == comment.account_id or current_user.user_role == "ADMIN" %}
+      <p><a href="{{ url_for('comment_delete', comment_id=comment.id) }}">Poista kommentti</a></p>
+      {% endif %}</td>
     </tr>
     {% endfor %}
   </table>
-{% endblock %}
+  
+
+  {% endblock %}
 
     

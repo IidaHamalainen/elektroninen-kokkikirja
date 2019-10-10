@@ -10,6 +10,8 @@ from application.recipes.forms import SearchForm
 from application.comments.forms import CommentForm
 from application.comments.models import Comment
 
+from application.ingredients.models import Ingredient
+
 @app.route("/recipes/list", methods=["GET"])
 def recipes_list():
     return render_template("recipes/list.html", recipes = Recipe.query.all())
@@ -59,9 +61,8 @@ def recipes_form():
 #Yksittäisen reseptin näyttäminen
 @app.route("/recipes/<recipe_id>/", methods=["GET"])
 def recipes_show_single(recipe_id):
-   
-    s = Recipe.query.get(recipe_id)
 
+    s = Recipe.query.get(recipe_id)
     comments = Comment.query.join(Recipe).filter(Recipe.id == s.id)
     
     return render_template("recipes/single.html", recipe = s, comments=comments)
@@ -74,7 +75,10 @@ def recipe_edit(recipe_id):
     form = RecipeForm(formdata=request.form, obj=r)
 
     if r.account_id != current_user.id:
-        return login_manager.unauthorized()
+        if current_user.user_role == "ADMIN":
+            pass
+        else:
+            return login_manager.unauthorized()
 
     if request.method == "POST":
         save_changes(r, form)
@@ -106,7 +110,6 @@ def recipes_create():
     r.difficult = form.difficult.data
     r.event = form.event.data
     r.account_id = current_user.id
-    
 
     db.session().add(r)
     db.session().commit()
@@ -118,6 +121,12 @@ def recipes_create():
 @login_required(role="ANY")
 def delete(recipe_id):
     r = Recipe.query.get(recipe_id)
+    
+    if r.account_id != current_user.id:
+        if current_user.user_role == "ADMIN":
+            pass
+        else:
+            return login_manager.unauthorized()
 
     if request.method == "POST":
         db.session().delete(r)
