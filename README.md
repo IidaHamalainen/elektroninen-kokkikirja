@@ -22,7 +22,7 @@ Toiminnot:
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
 
 #### Käyttäjätunnukset
-Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa itse lisäämiään ohjeita. Käyttäjä voi myös lisätä kommentin omaan tai muiden lisäämään ohjeeseen. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
+Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa itse lisäämiään ohjeita. Käyttäjä voi myös lisätä kommentin omaan tai muiden lisäämään ohjeeseen ja poistaa oman kommenttinsa. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
 
 Herokun tietokantaan tallennettuja käyttäjiä:
 
@@ -31,7 +31,7 @@ Herokun tietokantaan tallennettuja käyttäjiä:
 - Matti, käyttäjätunnus sieni, salasana salainen
 
 - Admin, käyttäjätunnus admin, salasana admin. 
-Toistaiseksi Admin näkee kaikissa ohjeissa muokkaa ja poista -toimintojen linkit, joita tavalliset käyttäjät eivät näe muiden ohjeissa, mutta ne eivät vielä ole toiminnassa adminina.
+Admin voi perustoimintojen lisäksi poistaa ja muokata kaikkien käyttäjien ohjeita ja poistaa kommentteja.
 
 ##### Huomioita/ korjattavia:
 - Herokussa ohjetta haettaessa alkukirjaimen koko merkitsee, Pulla ei siis löydyhakusanalla pulla, vaikka paikallisessa versiossa tämä toimii.
