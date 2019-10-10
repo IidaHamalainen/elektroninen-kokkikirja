@@ -1,14 +1,14 @@
 # Elektroninen kokkikirja
 
 Aiheeni on jälkiruokaohjeita sisältävä sovellus, josta käytäjä voi hakea ohjeita eri perusteilla 
-(raaka-aine, vaikeus, tilaisuus). Kirjautunut käyttäjä pääsee lisäämään tietokantaan reseptejä sekä 
-kirjoittamaan kommentteja ruokaohjeisiin. Käyttäjä pystyy muokaamaan ja poistamaan omia reseptejä ja kommentteja, minkä lisäksi ylläpitäjä pystyy muokkaamaan ja poistamaan reseptejä ja poistamaan kommentteja. Ylläpitäjä myös hallinnoi käyttäjiä. 
+(nimi, vaikeus, tilaisuus). Kirjautunut käyttäjä pääsee lisäämään tietokantaan reseptejä sekä 
+kirjoittamaan kommentteja ruokaohjeisiin. Käyttäjä pystyy muokaamaan ja poistamaan omia reseptejään ja kommenttejaan, minkä lisäksi ylläpitäjä pystyy muokkaamaan ja poistamaan reseptejä ja poistamaan kommentteja. 
 
 Toiminnot:
-- kirjautuminen ja uuden käyttäjätunnuksen luominen
-- ruokaohjeen lisääminen, muokkaaminen ja poistaminen
-- ohjeiden hakeminen
-- kommentin lisääminen ohjeeseen
+- kirjautuminen ja uuden käyttäjätunnuksen luominen.
+- ruokaohjeen lisääminen, muokkaaminen ja poistaminen.
+- ohjeiden hakeminen.
+- kommentin lisääminen ohjeeseen.
 
 
 [Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/tietokantakaavio.png)
@@ -22,7 +22,7 @@ Toiminnot:
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
 
 #### Käyttäjätunnukset
-Tällä hetkellä kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa itse lisäämiään ohjeita. Käyttäjä voi myös lisätä kommentin omaan tai muiden lisäämään ohjeeseen ja poistaa oman kommenttinsa. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
+Kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa itse lisäämiään ohjeita. Käyttäjä voi myös lisätä kommentin omaan tai muiden lisäämään ohjeeseen ja poistaa oman kommenttinsa. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
 
 Herokun tietokantaan tallennettuja käyttäjiä:
 
@@ -31,7 +31,7 @@ Herokun tietokantaan tallennettuja käyttäjiä:
 - Matti, käyttäjätunnus sieni, salasana salainen
 
 - Admin, käyttäjätunnus admin, salasana admin. 
-Admin voi perustoimintojen lisäksi poistaa ja muokata kaikkien käyttäjien ohjeita ja poistaa kommentteja.
+Admin voi perustoimintojen lisäksi poistaa ja muokata kaikkien käyttäjien ohjeita ja poistaa kommentteja. Admin voi myös lisätä raaka-aineita tietokantaan.
 
 ##### Huomioita/ korjattavia:
 - Herokussa ohjetta haettaessa alkukirjaimen koko merkitsee, Pulla ei siis löydyhakusanalla pulla, vaikka paikallisessa versiossa tämä toimii.
