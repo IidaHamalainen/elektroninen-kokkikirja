@@ -13,6 +13,7 @@ def ingredient_form():
     return render_template("ingredient/new_ingredient.html", form = IngredientForm())
 
 @app.route("/ingredients", methods=["POST"])
+@login_required(role="ANY")
 def ingredient_create():
     form = IngredientForm(request.form)
 
@@ -23,4 +24,6 @@ def ingredient_create():
 
     return redirect(url_for("index"))
 
-    
+@app.route("/ingredients/list", methods=["GET"])
+def ingredients_list():
+    return render_template("ingredient/all_ingredients.html", ingredients = Ingredient.query.all())

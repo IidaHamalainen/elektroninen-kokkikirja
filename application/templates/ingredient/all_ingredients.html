@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<p> Valitse tärkeimmät ainekset</p>
+  <table>
+    <tr>
+      <th>Ainesosa</th>
+    </tr>
+    {% for ingredient in ingredients %}
+    <tr>
+      <td>{{ ingredient.name }}</td>
+    </tr>
+    {% endfor %}  
+  </table>
+{% endblock %}

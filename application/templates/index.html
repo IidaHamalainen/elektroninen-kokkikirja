@@ -19,5 +19,9 @@
 </ul>
 
 {% endif %}
+
+{% if current_user.user_role == "ADMIN" %}
 <p><a href="{{ url_for('ingredient_form') }}">Lisää raaka-aine</a></p>
+{% endif %}
+
 {% endblock %}
