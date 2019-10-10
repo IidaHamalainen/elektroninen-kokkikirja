@@ -111,10 +111,6 @@ def recipes_create():
     r.event = form.event.data
     r.account_id = current_user.id
 
-    #aineksen tallentaminen
-    i = Ingredient()
-    r.recipeingredients.append(i)
-    
     db.session().add(r)
     db.session().commit()
   
