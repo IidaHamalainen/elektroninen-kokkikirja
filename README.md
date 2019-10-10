@@ -17,6 +17,8 @@ Toiminnot:
 
 [Käyttötapaukset](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/K%C3%A4ytt%C3%B6tapaukset.md)
 
+[Asennusohje](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/Asennusohje.md)
+
 **Sovellus Herokussa**
 
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
