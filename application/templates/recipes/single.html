@@ -6,10 +6,15 @@
   <p>Vaikeus: {{ recipe.difficult }}</p>
   <p>Tilaisuus: {{ recipe.event }}</p>
   <p>ohjeen loi: {{ recipe.account_id }}</p>
-  
+  <h5>Aineet:</h5>
+  <ul>
+  {% for ingredient in recipe.recipeingredients %}
+  <li>{{ ingredient.name }}</li>
+  {% endfor %}
+  </ul>
 
   <h5>Valmistusohje</h5>
-  <p> {{recipe.text }}</p>
+  <p> {{ recipe.text }}</p>
 
   
   

@@ -40,6 +40,9 @@ def recipes_results(search):
         
         elif search.data["select"] == "Tilaisuus":
             results = Recipe.query.filter(Recipe.event.contains(search_string)).all()
+
+        elif search.data["select"] == "Ainekset":
+            results = Recipe.query.filter(Recipe.recipeingredients.contains(search_string)).all()
     
     if search.data["search"] == "":
         qry = db_session.query(Recipe)
@@ -56,7 +59,10 @@ def recipes_results(search):
 @app.route("/recipes/new/")
 @login_required(role="ANY")
 def recipes_form():
-    return render_template("recipes/new.html", form = RecipeForm())
+    form = RecipeForm(request.form)
+    form.ingredients.choices = [(ingredient.id, ingredient.name) for ingredient in Ingredient.query.all()]
+
+    return render_template("recipes/new.html", form = form)
 
 #Yksittäisen reseptin näyttäminen
 @app.route("/recipes/<recipe_id>/", methods=["GET"])
@@ -73,6 +79,8 @@ def recipes_show_single(recipe_id):
 def recipe_edit(recipe_id):
     r = Recipe.query.get(recipe_id)
     form = RecipeForm(formdata=request.form, obj=r)
+
+    form.ingredients.choices = [(ingredient.id, ingredient.name) for ingredient in Ingredient.query.all()]
 
     if r.account_id != current_user.id:
         if current_user.user_role == "ADMIN":
@@ -92,7 +100,9 @@ def save_changes(recipe, form, new = False):
     recipe.difficult = form.difficult.data
     recipe.event = form.event.data
     recipe.text = form.text.data
-
+    ingredients = [Ingredient.query.get(id) for id in form.ingredients.data]
+    recipe.recipeingredients = ingredients
+   
     db.session().commit()
     return redirect(url_for("recipes_list"))
 
@@ -102,14 +112,17 @@ def save_changes(recipe, form, new = False):
 @login_required(role="ANY")
 def recipes_create():
     form = RecipeForm(request.form)
-
+    form.ingredients.choices = [(ingredient.id, ingredient.name) for ingredient in Ingredient.query.all()]
+    
     if not form.validate():
         return render_template("recipes/new.html", form = form)
 
+    ingredients = [Ingredient.query.get(id) for id in form.ingredients.data]
     r = Recipe(form.name.data, form.text.data)
     r.difficult = form.difficult.data
     r.event = form.event.data
     r.account_id = current_user.id
+    r.recipeingredients = ingredients
 
     db.session().add(r)
     db.session().commit()
