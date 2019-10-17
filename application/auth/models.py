@@ -49,7 +49,8 @@ class User(Base):
         stmt = text("SELECT Account.id, Account.name, COUNT(Recipe.id) AS rcount FROM Account"
                     " LEFT JOIN Recipe ON Recipe.account_id = Account.id"
                     " GROUP BY Account.id"
-                    " ORDER BY rcount DESC")
+                    " ORDER BY rcount DESC"
+                    " LIMIT 10")
         res = db.engine.execute(stmt)
 
         response = []

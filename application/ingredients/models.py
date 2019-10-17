@@ -17,7 +17,8 @@ class Ingredient(Base):
         stmt = text("SELECT Ingredient.id, Ingredient.name, COUNT(Recipeingredient.recipe_id) AS rcount FROM Ingredient"
                     " LEFT JOIN Recipeingredient ON Recipeingredient.ingredient_id = Ingredient.id"
                     " GROUP BY Ingredient.id"
-                    " ORDER BY rcount DESC")
+                    " ORDER BY rcount DESC"
+                    " LIMIT 8")
         res = db.engine.execute(stmt)
 
         response = []
