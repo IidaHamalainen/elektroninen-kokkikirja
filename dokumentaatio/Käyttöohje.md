@@ -28,6 +28,9 @@ Käyttäjä pystyy muokkaamaan ja poistamaan kommenttinsa kommentin vierestä l�
 Sovelluksen etusivulta pääsee näkemään raaka.ainelistauksen listaa raaka-aineet linkin kautta. 
 Ylläpitäjä näkee listauksen yhteydessä napin, jonka kautta pääsee lisäämään raaka-aineen tietokantaan.
 
+### Tilastot
+Yläreunan tilastot-napista pääsee sivulle, jolla näkyy listaus 10 eniten reseptejä kirjoittaneesta käyttäjästä sekä lista 8 eniten käytetystä raaka-aineesta.
+
 ### Ylläpitäjän toiminnot
 Ylläpitäjä pääsee muokkaamaan ja poistamaan kaikkien käyttäjien reseptejä. 
 Ylläpitäjän on myös mahdollista poistaa käyttäjien kommentteja jos ne ovat esimerkiksi loukkaavia, mutta ei muokata niitä.
