@@ -1,17 +1,17 @@
 # Elektroninen kokkikirja
 
 Aiheeni on jälkiruokaohjeita sisältävä sovellus, josta käytäjä voi hakea ohjeita eri perusteilla 
-(nimi, vaikeus, tilaisuus). Kirjautunut käyttäjä pääsee lisäämään tietokantaan reseptejä sekä 
+(nimi, vaikeus, tilaisuus, raaka-aine). Kirjautunut käyttäjä pääsee lisäämään tietokantaan reseptejä sekä 
 kirjoittamaan kommentteja ruokaohjeisiin. Käyttäjä pystyy muokaamaan ja poistamaan omia reseptejään ja kommenttejaan, minkä lisäksi ylläpitäjä pystyy muokkaamaan ja poistamaan reseptejä ja poistamaan kommentteja. 
 
 Toiminnot:
 - kirjautuminen ja uuden käyttäjätunnuksen luominen.
 - ruokaohjeen lisääminen, muokkaaminen ja poistaminen.
 - ohjeiden hakeminen.
-- kommentin lisääminen ohjeeseen.
+- kommentin lisääminen ohjeeseen ja kommentin muokkaaminen ja poistaminen.
 
 
-[Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/tietokantakaavio.png)
+[Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/elektroninen-kokkikirja.png)
 
 [Tietokannan rakenteen kuvaus](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/tietokantarakenteen%20kuvaus.md)
 
@@ -30,11 +30,9 @@ Herokun tietokantaan tallennettuja käyttäjiä:
 
 - Tessa Testi, käyttäjätunnus tessa, salasana testi
 - Anna, käyttäjätunnus ansku, salasana abcd
-- Matti, käyttäjätunnus sieni, salasana salainen
 
 - Admin, käyttäjätunnus admin, salasana admin. 
 Admin voi perustoimintojen lisäksi poistaa ja muokata kaikkien käyttäjien ohjeita ja poistaa kommentteja. Admin voi myös lisätä raaka-aineita tietokantaan.
 
-##### Huomioita/ korjattavia:
-- Herokussa ohjetta haettaessa alkukirjaimen koko merkitsee, Pulla ei siis löydyhakusanalla pulla, vaikka paikallisessa versiossa tämä toimii.
+
 
