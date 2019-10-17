@@ -10,6 +10,15 @@ Toiminnot:
 - ohjeiden hakeminen.
 - kommentin lisääminen ohjeeseen ja kommentin muokkaaminen ja poistaminen.
 
+Kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa itse lisäämiään ohjeita. Käyttäjä voi myös lisätä kommentin omaan tai muiden lisäämään ohjeeseen ja poistaa oman kommenttinsa. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
+
+Herokun tietokantaan tallennettuja käyttäjiä:
+
+- Tessa Testi, käyttäjätunnus tessa, salasana testi
+- Anna, käyttäjätunnus ansku, salasana abcd
+
+- Admin, käyttäjätunnus admin, salasana admin. 
+Admin voi perustoimintojen lisäksi poistaa ja muokata kaikkien käyttäjien ohjeita ja poistaa kommentteja. Admin voi myös lisätä raaka-aineita tietokantaan.
 
 [Tietokantakaavio](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/kuvat/elektroninen-kokkikirja.png)
 
@@ -25,16 +34,8 @@ Toiminnot:
 
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
 
-#### Käyttäjätunnukset
-Kaikki voivat hakea ohjeita ja katsoa yksittäisen ohjeen tietoja. Kirjautunut käyttäjä voi lisätä ohjeen, sekä muokata tai poistaa itse lisäämiään ohjeita. Käyttäjä voi myös lisätä kommentin omaan tai muiden lisäämään ohjeeseen ja poistaa oman kommenttinsa. Sovelluksessa pystyy luomaan uuden käyttäjän Luo uusi tunnus- napin kautta.
 
-Herokun tietokantaan tallennettuja käyttäjiä:
 
-- Tessa Testi, käyttäjätunnus tessa, salasana testi
-- Anna, käyttäjätunnus ansku, salasana abcd
-
-- Admin, käyttäjätunnus admin, salasana admin. 
-Admin voi perustoimintojen lisäksi poistaa ja muokata kaikkien käyttäjien ohjeita ja poistaa kommentteja. Admin voi myös lisätä raaka-aineita tietokantaan.
 
 
 
