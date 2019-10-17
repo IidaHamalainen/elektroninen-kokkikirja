@@ -72,7 +72,7 @@ def recipes_show_single(recipe_id):
 
     s = Recipe.query.get(recipe_id)
     comments = Comment.query.join(Recipe).filter(Recipe.id == s.id)
-    
+
     return render_template("recipes/single.html", recipe = s, comments=comments)
 
 #Reseptin muokkaaminen
@@ -136,6 +136,7 @@ def recipes_create():
 @login_required(role="ANY")
 def delete(recipe_id):
     r = Recipe.query.get(recipe_id)
+    comments = Comment.query.join(Recipe).filter(Recipe.id == r.id)
 
     if r.account_id != current_user.id:
         if current_user.user_role == "ADMIN":
@@ -144,6 +145,10 @@ def delete(recipe_id):
             return login_manager.unauthorized()
 
     if request.method == "POST":
+
+        for comment in comments:
+            db.session().delete(comment)
+
         db.session().delete(r)
         db.session().commit()
         return redirect(url_for("recipes_list"))

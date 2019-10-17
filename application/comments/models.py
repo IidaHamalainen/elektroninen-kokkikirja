@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from application.auth.models import User
 
 class Comment(Base):
 
@@ -11,5 +12,7 @@ class Comment(Base):
     def __init__(self, comment_text):
         self.comment_text = comment_text
 
-    
+    def getCommenter(account_id):
+        commenter = User.get_username(account_id)
+        return commenter
         
