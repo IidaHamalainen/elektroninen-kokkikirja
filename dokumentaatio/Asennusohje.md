@@ -17,10 +17,15 @@ Sovellus käynnistyy nyt osoitteeseen http://localhost:5000/
 
 ### Heroku
 
+Luo Heroku cli komennolla `heroku create sovelluksennimi`
+
 Asenna Gunicorn-palvelin `pip install gunicorn` ja luo Procfile-tiedosto `echo "web: gunicorn --preload --workers 1 application:app" > Procfile`
 
 Asenna ajuri psycopg2: `pip install psycopg2`
 
 Luo sovellukseen ympäristömuuttuja HEROKU: `heroku config:set HEROKU=1`
 
-Lisää Herokuun tietokanta: `heroku addons:add heroku-postgresql:hobby-dev`
+Lisää Herokuun PostgreSQL tietokanta: `heroku addons:add heroku-postgresql:hobby-dev`
+
+Lataa sovellus herokuun komennolla `git push heroku master`
+
