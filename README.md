@@ -30,6 +30,8 @@ Admin voi perustoimintojen lisäksi poistaa ja muokata kaikkien käyttäjien ohj
 
 [Asennusohje](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/Asennusohje.md)
 
+[Puutteet ja kehitysideat](https://github.com/IidaHamalainen/elektroninen-kokkikirja/blob/master/dokumentaatio/Puuttuvat%20ominaisuudet%20ja%20kehitysideat.md)
+
 **Sovellus Herokussa**
 
 [elektroninen-kokkikirja](https://elektroninen-kokkikirja.herokuapp.com/)
