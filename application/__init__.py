@@ -14,6 +14,8 @@ else:
 
 db = SQLAlchemy(app)
 
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt(app)
 
 #Kirjautuminen
 from os import urandom
@@ -71,6 +73,8 @@ from application.comments import views
 
 from application.ingredients import models
 from application.ingredients import views
+
+from application.statistics import views
 
 #kirjautuminen
 from application.auth.models import User

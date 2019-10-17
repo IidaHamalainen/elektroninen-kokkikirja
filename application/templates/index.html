@@ -5,20 +5,6 @@
   Nyt kokataan! Täältä löydät makeimmat ohjeet
 </p>
 
-{% if user_recipes is defined %}
-<p>
-  Näillä käyttäjillä on reseptejä:
-</p>
-
-<ul>
-  {% for user in user_recipes %}
-  <li>
-    {{user.name}} {{user.count}}
-  </li>
-  {% endfor %}
-</ul>
-
-{% endif %}
 
 <p><a href="{{ url_for('ingredients_list') }}">Listaa raaka-aineet</a></p>
 

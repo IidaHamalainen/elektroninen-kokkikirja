@@ -2,10 +2,11 @@
   
 {% block body %}
 
-<h1>Jätä kommentti</h1>
+<h1>Muokkaa kommenttia</h1>
 
-<form method="POST" action="{{ url_for('comment_create', recipe_id=recipe.id) }}">
-  <table>
+<form method="POST" action="{{ url_for('comment_edit', comment_id=comment.id) }}">
+
+    <table>
     <tr>
       <td>
         {{ form.comment_text.label }}
@@ -23,7 +24,7 @@
     </tr>
     <tr>
       <td colspan="3">
-          <button type="submit" class="btn btn-primary">Lisää kommentti</button>
+          <button type="submit" class="btn btn-primary">Tallenna muutos</button>
       </td>
     </tr>
   </table>

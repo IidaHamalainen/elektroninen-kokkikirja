@@ -2,7 +2,7 @@
 
 {% block body %}
   
-  <h4>Ohje: {{ recipe.name }}</h4>
+  <h1> {{ recipe.name }}</h1>
   <p>Vaikeus: {{ recipe.difficult }}</p>
   <p>Tilaisuus: {{ recipe.event }}</p>
   <p>ohjeen loi: {{ recipe.account_id }}</p>
@@ -36,7 +36,8 @@
       <td>{{ comment.account_id }}</td>
     
       <td>{% if current_user.id == comment.account_id or current_user.user_role == "ADMIN" %}
-      <p><a href="{{ url_for('comment_delete', comment_id=comment.id) }}">Poista kommentti</a></p>
+        <p><a href="{{ url_for('comment_edit', comment_id=comment.id) }}">Muokkaa kommenttia</a></p>
+        <p><a href="{{ url_for('comment_delete', comment_id=comment.id) }}">Poista kommentti</a></p>
       {% endif %}</td>
     </tr>
     {% endfor %}

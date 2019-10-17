@@ -21,22 +21,29 @@
             <a class="nav-link" href="{{ url_for('recipes_form') }}">Lisää uusi ohje</a>
           </li>
           <li class="nav-item">
-	    <a class="nav-link" href="{{ url_for('recipes_search') }}">Etsi ohjetta</a>
-	  </li>
+	          <a class="nav-link" href="{{ url_for('recipes_search') }}">Etsi ohjetta</a>
+          </li>
+          <li class="nav-item">
+	          <a class="nav-link" href="{{ url_for('show_statistics') }}">Tilastot</a>
+	        </li>
         </ul>
         <div class="form-inline mt-2 mt-md-0">
-	  {% if current_user.is_authenticated %}
-	  <a href="{{ url_for('auth_logout') }}">Kirjautunut nimellä {{ current_user.name }} -- Kirjaudu ulos</a>
-	  {% else %}
-	  <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-	      <a class="nav-link" href="{{ url_for('auth_login') }}">Kirjaudu </a>
-	    </li>
-	    <li>
-              <a class="nav-link" href="{{ url_for('account_form') }}">Luo uusi tunnus</a>
-	    </li>  
-          </ul>
-          {% endif %}
+        {% if current_user.is_authenticated %}
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+	          <a class="nav-link" href="{{ url_for('auth_logout') }}">Kirjautunut nimellä {{ current_user.name }} -- Kirjaudu ulos</a>
+          </li>
+        </ul>
+        {% else %}
+	      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+	          <a class="nav-link" href="{{ url_for('auth_login') }}">Kirjaudu </a>
+	        </li>
+	        <li>
+            <a class="nav-link" href="{{ url_for('account_form') }}">Luo uusi tunnus</a>
+	        </li>  
+        </ul>
+        {% endif %}
         </div>
      </div>
     </nav>

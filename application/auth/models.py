@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from application import bcrypt
 from sqlalchemy.sql import text
 
 class User(Base):
@@ -7,7 +8,7 @@ class User(Base):
     __tablename__ = "account"
 
     name = db.Column(db.String(144), nullable=False)
-    username = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), unique=True, nullable=False)
     password = db.Column(db.String(144), nullable=False)
     user_role = db.Column(db.String(15), nullable=False)
     
@@ -17,7 +18,7 @@ class User(Base):
     def __init__(self, name, username, password, user_role):
         self.name = name
         self.username = username
-        self.password = password
+        self.passwordHash = bcrypt.generate_password_hash(password).decode("utf-8")
         self.user_role = "USER"
   
     def get_id(self):

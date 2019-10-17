@@ -7,7 +7,7 @@ from application.recipes.models import Recipe
 from application.comments.forms import CommentForm
 from application.comments.models import Comment
 
-
+#kommentin lisäämnen
 @app.route("/recipes/<recipe_id>/comment")
 @login_required(role="ANY")
 def comment_form(recipe_id):
@@ -33,6 +33,31 @@ def comment_create(recipe_id):
   
     return redirect(url_for("recipes_show_single", recipe_id = recipe.id))
 
+#kommentin muokkaaminen
+@app.route("/comments/edit/<comment_id>", methods=["GET", "POST"] )
+@login_required(role="ANY")
+def comment_edit(comment_id):
+
+    c = Comment.query.get(comment_id)
+    form = CommentForm(formdata=request.form, obj=c)
+
+    if c.account_id != current_user.id:
+        return login_manager.unauthorized()
+
+    if request.method == "POST":
+        save_changes(c, form)
+        return redirect(url_for("recipes_show_single", recipe_id = c.recipe_id))
+
+    return render_template("comments/edit_comment.html", comment = c, form=form)
+
+def save_changes(comment, form, new = False):
+
+    comment.comment_text = form.comment_text.data
+
+    db.session().commit()
+    return redirect(url_for("recipes_show_single", recipe_id = comment.recipe_id))
+
+#kommentin poistaminen
 @app.route("/comments/delete/<comment_id>", methods=["GET", "POST"] )
 @login_required(role="ANY")
 def comment_delete(comment_id):
