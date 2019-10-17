@@ -21,12 +21,16 @@ SELECT * FROM Recipe WHERE difficult = 'Helppo';
 INSERT INTO Recipe(id, name, difficult, event, text, account_id) 
   VALUES(3,'Torttu','Keskitaso','Arki','torttuohje yms', 1);
 ```
-- Käyttäjänä pystyn muokkaamaan lisäämiäni reseptejä.
+Aineen lisäys reseptiin:
+```
+INSERT INTO Recipeingredient(recipe_id, ingredient_id) Values (3, 1);
+```
+- Käyttäjänä pystyn muokkaamaan lisäämiäni reseptejä. Ylläpitäjänä voin muokata kaikkia reseptejä.
 Esimerkkinä tilaisuuden päivitys:
 ```
 UPDATE Recipe SET event='Juhla' WHERE id=1;
 ```
-- Käyttäjänä pystyn poistamaan lisäämäni reseptin
+- Käyttäjänä pystyn poistamaan lisäämäni reseptin / Ylläpitäjänä pystyn poistamaan kaikkien lisäämiä reseptejä
 ```
 DELETE FROM Recipe WHERE id=1;
 ```
@@ -36,13 +40,20 @@ INSERT INTO Comment(id, comment_text, account_id, recipe_id)
   VALUES(3,'Hyvä ohje!', 2, 1);
 ```
 
-- Käyttäjänä pystyn poistamaan oman kommentin
+- Käyttäjänä pystyn poistamaan oman kommentin / Ylläpitäjänä voin poistaa minkä vain kommentin
 ```
 DELETE FROM Comment WHERE id=3;
 ```
+- Käyttäjänä pystyn muokkaamaan kommenttiani
+```
+UPDATE Comment SET comment_text='muokattu teksti' WHERE id=1;
+```
+- Ylläpitäjänä voin lisätä raaka-aineen tietokantaan
+```
+INSERT INTO Ingredient(id, name) 
+  VALUES(1, 'Suklaa');
+```
 
-- Ylläpitäjänä pystyn muokkaamaan ja poistamaan kaikkien käyttäjien reseptejä 
-- Ylläpitäjänä pystyn poistamaan käyttäjien kommentteja
 
 - Ylläpitäjänä pystyn hallitsemaan jäsenten tietoja.
-Tätä ei ole vielä totetutettu
+Tätä ei ehditty toteuttaa
