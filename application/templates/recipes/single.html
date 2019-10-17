@@ -34,10 +34,13 @@
     <tr>
       <td>{{ comment.comment_text }}</td>
       <td>{{ comment.account_id }}</td>
-    
+
+      <td>{% if current_user.id == comment.account_id %}
+          <p><a href="{{ url_for('comment_edit', comment_id=comment.id) }}">Muokkaa</a></p>
+        {% endif %}</td>
+      <td></td>
       <td>{% if current_user.id == comment.account_id or current_user.user_role == "ADMIN" %}
-        <p><a href="{{ url_for('comment_edit', comment_id=comment.id) }}">Muokkaa kommenttia</a></p>
-        <p><a href="{{ url_for('comment_delete', comment_id=comment.id) }}">Poista kommentti</a></p>
+        <p><a href="{{ url_for('comment_delete', comment_id=comment.id) }}">Poista</a></p>
       {% endif %}</td>
     </tr>
     {% endfor %}

@@ -4,9 +4,7 @@
 <h1> Tilastot </h1>
 
 {% if user_recipes is defined %}
-<p>
-  Käyttäjien reseptit:
-</p>
+<p>Käyttäjien reseptit:</p>
 
 <ul>
   {% for user in user_recipes %}
@@ -15,7 +13,18 @@
   </li>
   {% endfor %}
 </ul>
+{% endif %}
 
+{% if most_used is defined %}
+<p>Käytetyimmät raaka-aineet:</p>
+
+<ul>
+  {% for ingredient in most_used %}
+  <li>
+    {{ingredient.name}} {{ingredient.count}}
+  </li>
+  {% endfor %}
+</ul>
 {% endif %}
 
 {% endblock %}

@@ -8,8 +8,4 @@
 
 <p><a href="{{ url_for('ingredients_list') }}">Listaa raaka-aineet</a></p>
 
-{% if current_user.user_role == "ADMIN" %}
-<p><a href="{{ url_for('ingredient_form') }}">Lisää raaka-aine</a></p>
-{% endif %}
-
 {% endblock %}

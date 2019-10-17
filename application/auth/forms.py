@@ -1,6 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, PasswordField, validators
+from application.auth.models import User
+from wtforms import PasswordField, StringField, PasswordField, validators, ValidationError
   
+
+def validateUniqueUsername(form, field):
+    user = User.query.filter_by(username = field.data).first()
+    if user:
+        raise ValidationError("käyttäjätunnus on jo olemassa")
+
 class LoginForm(FlaskForm):
     username = StringField("Username")
     password = PasswordField("Password")
@@ -10,7 +17,7 @@ class LoginForm(FlaskForm):
 
 class AccountForm(FlaskForm):
     name = StringField("Nimi", [validators.Length(min=2, max=30)])
-    username = StringField("Käyttäjätunnus", [validators.Length(min=2, max=15)])
+    username = StringField("Käyttäjätunnus", [validators.Length(min=2, max=15), validateUniqueUsername])
     password = PasswordField("Salasana", [validators.Length(min=4, max=144)])
 
     class Meta:

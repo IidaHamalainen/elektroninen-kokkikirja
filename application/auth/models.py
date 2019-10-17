@@ -9,7 +9,7 @@ class User(Base):
 
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), unique=True, nullable=False)
-    password = db.Column(db.String(144), nullable=False)
+    passwordHash = db.Column(db.String(144), nullable=False)
     user_role = db.Column(db.String(15), nullable=False)
     
     recipes = db.relationship("Recipe", backref='account', lazy=True)
@@ -46,9 +46,10 @@ class User(Base):
 
     @staticmethod
     def users_recipes():
-        stmt = text("SELECT Account.id, Account.name, COUNT(Recipe.id) FROM Account"
+        stmt = text("SELECT Account.id, Account.name, COUNT(Recipe.id) AS rcount FROM Account"
                     " LEFT JOIN Recipe ON Recipe.account_id = Account.id"
-                    " GROUP BY Account.id")
+                    " GROUP BY Account.id"
+                    " ORDER BY rcount DESC")
         res = db.engine.execute(stmt)
 
         response = []

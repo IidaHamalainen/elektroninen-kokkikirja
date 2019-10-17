@@ -9,4 +9,7 @@ from application.auth.models import User
 
 @app.route("/statistics")
 def show_statistics():
-    return render_template("statistics/statistics_page.html", user_recipes=User.users_recipes())
+    user_recipes=User.users_recipes()
+    most_used=Ingredient.most_used()
+
+    return render_template("statistics/statistics_page.html", user_recipes=user_recipes, most_used=most_used)

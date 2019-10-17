@@ -1,15 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<p> Valitse tärkeimmät ainekset</p>
+<h1>Raaka-aineet</h1>
   <table>
-    <tr>
-      <th>Ainesosa</th>
-    </tr>
     {% for ingredient in ingredients %}
     <tr>
       <td>{{ ingredient.name }}</td>
     </tr>
     {% endfor %}  
   </table>
+
+  {% if current_user.user_role == "ADMIN" %}
+  <p><a href="{{ url_for('ingredient_form') }}">Lisää raaka-aine</a></p>
+  {% endif %}
+  
 {% endblock %}

@@ -25,7 +25,7 @@ def ingredient_create():
     db.session().add(ingredient)
     db.session().commit()
 
-    return redirect(url_for("index"))
+    return redirect(url_for("ingredients_list"))
 
 @app.route("/ingredients/list", methods=["GET"])
 def ingredients_list():
