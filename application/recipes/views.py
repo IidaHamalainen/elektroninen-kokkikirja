@@ -41,10 +41,10 @@ def recipes_results(search):
         elif search.data["select"] == "Tilaisuus":
             results = Recipe.query.filter(Recipe.event.contains(search_string)).all()
 
-        elif search.data["select"] == "Ainekset":
-            ing = Ingredient.query.filter(Ingredient.name.contains(search_string))
-            i = Ingredient(ing)
-            results = Recipe.query.filter(Recipe.recipeingredients.contains(i)).all()
+        elif search.data["select"] == "Raaka-aine":
+            name = search_string
+            results = Recipe.query.filter(Recipe.recipeingredients.any(name=name)).all()
+    
     
     if search.data["search"] == "":
         qry = db_session.query(Recipe)

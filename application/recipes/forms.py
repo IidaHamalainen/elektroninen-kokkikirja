@@ -17,7 +17,7 @@ class RecipeForm(FlaskForm):
         csrf = False
 
 class SearchForm(FlaskForm):
-    choices = [("Nimi", "Nimi"), ("Vaikeustaso", "Vaikeustaso"), ("Tilaisuus", "Tilaisuus"),("Ainekset", "Ainekset")]
+    choices = [("Nimi", "Nimi"), ("Vaikeustaso", "Vaikeustaso"), ("Tilaisuus", "Tilaisuus"),("Raaka-aine", "Raaka-aine")]
     select = SelectField(u'Etsi reseptiä', choices=choices)
     
     search = StringField("", [validators.DataRequired()])

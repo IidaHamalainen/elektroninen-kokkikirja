@@ -9,6 +9,9 @@ class Ingredient(Base):
     def __init__(self, name):
         self.name = name
 
+    def get_id(self):
+        return self.id
+
     @staticmethod
     def most_used():
         stmt = text("SELECT Ingredient.id, Ingredient.name, COUNT(Recipeingredient.recipe_id) AS rcount FROM Ingredient"
